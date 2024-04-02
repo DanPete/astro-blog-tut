@@ -1,0 +1,32 @@
+---
+import Social from "@/components/Social.astro";
+
+const socials = [
+  {
+    platform: "github",
+    username: "danpete",
+  },
+  {
+    platform: "twitter",
+    username: "dansack",
+  },
+  {
+    platform: "linkedin",
+    username: "DanSack",
+  },
+];
+---
+
+<footer>
+  <nav>
+    <ul class="flex gap-2">
+      {
+        socials.map(({ platform, username }) => (
+          <li>
+            <Social platform={platform} username={username} />
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</footer>

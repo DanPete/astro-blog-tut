@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Link from "@/components/atoms/Link.astro";
+type Props = {
+  frontmatter: {
+    title: string;
+    author: string;
+    pubDate: Date;
+    description: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+  };
+};
+
+const { frontmatter } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <div
+    class="p-4 border border-black inline-block mb-4 bg-black text-white max-w-96"
+  >
+    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <p>Written by: {frontmatter.author}</p>
+    <Image
+      class="my-4"
+      inferSize
+      src={frontmatter.image.url}
+      alt={frontmatter.image.alt}
+    />
+    <div>
+      <ul class="flex gap-2">
+        {
+          frontmatter.tags.map((tag) => (
+            <li>
+              <Link href={`/tags/${tag}`}>{tag}</Link>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <slot />
+</BaseLayout>

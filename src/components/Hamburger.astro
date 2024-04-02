@@ -1,0 +1,35 @@
+---
+const { open } = Astro.props;
+---
+
+<hamburger-menu class="pr-5 cursor-pointer" open={open}>
+  {
+    Array.from({ length: 3 }).map((_) => (
+      <span class="block w-10 h-[5px] bg-orange-400 mb-2.5" />
+    ))
+  }
+</hamburger-menu>
+
+<script>
+  type HamburgerMenuProps = {
+    open: boolean;
+  };
+
+  class HamburgerMenu extends HTMLElement {
+    open: HamburgerMenuProps["open"];
+
+    constructor() {
+      super();
+      this.addEventListener("click", this.toggleMenu);
+      this.open = this.hasAttribute("open");
+      console.log("component is ", this.open);
+    }
+
+    toggleMenu() {
+      this.open = !this.open;
+      console.log("should toggle menu", this.open);
+    }
+  }
+
+  customElements.define("hamburger-menu", HamburgerMenu);
+</script>

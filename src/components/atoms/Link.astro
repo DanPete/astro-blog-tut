@@ -1,0 +1,8 @@
+---
+const { href, class: className } = Astro.props;
+import { cn } from "@/utils/cn";
+---
+
+<a class={cn("text-blue-600 underline inline-block", className)} href={href}>
+  <slot />
+</a>
