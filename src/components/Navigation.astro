@@ -12,7 +12,10 @@ const links = [
     {
       links.map((link) => (
         <li>
-          <a class="text-white underline" href={link.href}>
+          <a
+            class="text-black dark:text-white underline transition-all duration-700"
+            href={link.href}
+          >
             {link.text}
           </a>
         </li>

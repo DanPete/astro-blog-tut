@@ -1,9 +1,15 @@
 ---
 import Navigation from "@/components/Navigation.astro";
 import Hamburger from "@/components/Hamburger.astro";
+import ThemeIcon from "@/components/ThemeIcon.astro";
 ---
 
-<header class="p-6 bg-black">
-  <Hamburger open />
-  <Navigation />
+<header
+  class="p-6 dark:bg-black border-b border-black transition-all duration-700"
+>
+  <!-- <Hamburger open /> -->
+  <div class="flex gap-4 items-center">
+    <ThemeIcon />
+    <Navigation />
+  </div>
 </header>
